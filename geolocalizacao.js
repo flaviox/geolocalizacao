@@ -3,6 +3,8 @@ $(document).ready(function() {
 		navigator.geolocation.getCurrentPosition(
 			function(p){
 				$('#coordenadas').html('Latitude: ' + p.coords.latitude + ' - ' + 'Longitude: ' + p.coords.longitude);
+				var urlMapa = 'https://maps.googleapis.com/maps/api/staticmap?center=' + p.coords.latitude + ',' + p.coords.longitude + '&size=640x480&zoom=15&mapType=roadmap&markers=color:blue|' + p.coords.latitude + ',' + p.coords.longitude;
+				$('#mapa').html("<img src='" + urlMapa + "' />");
 			},
 			function(e){
 				switch (e.code){
